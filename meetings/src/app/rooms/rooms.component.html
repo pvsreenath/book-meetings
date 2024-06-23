@@ -1,0 +1,45 @@
+<div class="header-content">
+    <h3 class="table-header">Room Meeting Details</h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Select Meeting Room</mat-label>
+      <mat-select (selectionChange)="onChange($event)">
+        <mat-option *ngFor="let room of rooms" [value]="room" >
+          {{ room }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>
+<table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef>Sr No.</th>
+    <td mat-cell *matCellDef="let element; index as i">{{ i + 1 }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="userName">
+    <th mat-header-cell *matHeaderCellDef>User Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="agenda">
+    <th mat-header-cell *matHeaderCellDef>Agenda</th>
+    <td mat-cell *matCellDef="let element">{{ element.agenda }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef>Date</th>
+    <td mat-cell *matCellDef="let element">{{ element.date | date }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="time">
+    <th mat-header-cell *matHeaderCellDef>Time</th>
+    <td mat-cell *matCellDef="let element">{{ element.startTime }} - {{element.endTime}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="room">
+    <th mat-header-cell *matHeaderCellDef>Room</th>
+    <td mat-cell *matCellDef="let element">{{ element.room }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

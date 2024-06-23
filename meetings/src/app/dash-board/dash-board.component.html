@@ -1,0 +1,14 @@
+<mat-toolbar>
+  <span>Book Room Meeting</span>
+  <span class="spacer"></span>
+  <div class="info">
+    <span>{{ user.userName }}</span>
+    <button mat-button>logout</button>
+  </div>
+</mat-toolbar>
+
+<div class="meetings">
+    <button mat-raised-button color="primary" class="meetings-button" (click)="openBookMeetingDialog()">Book Meeting</button>
+    <app-meetings> </app-meetings>
+    <app-rooms></app-rooms>
+</div>

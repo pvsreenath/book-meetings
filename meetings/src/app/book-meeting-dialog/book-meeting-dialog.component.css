@@ -1,0 +1,17 @@
+.time {
+  display: flex;
+  gap: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.hearder-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-room-button {
+  margin-top: 10px;
+}
