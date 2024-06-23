@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  userForm!: FormGroup;
+  public userForm!: FormGroup;
 
   constructor(
     private readonly dataService: DataService,
@@ -22,7 +22,9 @@ export class LoginComponent implements OnInit {
       password: new FormControl(null, [Validators.required]),
     });
   }
-  onSubmit() {
+
+  public onSubmit(): void {
+    this.dataService.user = this.userForm.value;
     if (this.dataService.user.password === this.userForm.value.password) {
       this.router.navigate(['dashboard']);
     }

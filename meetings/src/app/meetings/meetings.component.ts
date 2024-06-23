@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { Meeting } from '../models/meeting.model';
 
 @Component({
   selector: 'app-meetings',
@@ -7,18 +8,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./meetings.component.css'],
 })
 export class MeetingsComponent implements OnInit {
-  constructor(private dataService: DataService, private cd: ChangeDetectorRef) {}
-
-
-
-  ngOnInit(): void {
-    this.dataService.changeNotify.subscribe(() => {
-      this.dataSource = this.dataService.meetings;
-      this.cd.detectChanges()
-    });
-  }
-
-  displayedColumns: string[] = [
+  public displayedColumns: string[] = [
     'position',
     'userName',
     'agenda',
@@ -26,8 +16,18 @@ export class MeetingsComponent implements OnInit {
     'time',
     'room',
   ];
-  dataSource = this.dataService.meetings;
-  deleteMeeting(row: any) {
+  public dataSource = this.dataService.meetings;
+
+  constructor(
+    private dataService: DataService,
+    private cd: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.initializeData();
+  }
+
+  public deleteMeeting(row: Meeting): void {
     this.dataService.meetings = this.dataService.meetings.filter(
       (meeting) =>
         !(
@@ -38,5 +38,12 @@ export class MeetingsComponent implements OnInit {
     );
     this.dataSource = this.dataService.meetings;
     this.dataService.changeNotify.next();
+  }
+
+  private initializeData(): void {
+    this.dataService.changeNotify.subscribe(() => {
+      this.dataSource = this.dataService.meetings;
+      this.cd.detectChanges();
+    });
   }
 }

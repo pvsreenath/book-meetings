@@ -15,3 +15,9 @@
 .search-room-button {
   margin-top: 10px;
 }
+
+.custom-time-input {
+  padding: 15px 0px 0px 0px;
+  height: 17px;
+  box-sizing: border-box;
+}

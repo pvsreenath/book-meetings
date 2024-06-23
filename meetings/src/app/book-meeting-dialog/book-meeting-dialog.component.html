@@ -13,30 +13,27 @@
       </mat-form-field>
     </div>
     <div class="time">
-      <div>
-        <mat-form-field appearance="fill">
-          <mat-label>Meeting Date</mat-label>
-          <input formControlName="date" matInput [matDatepicker]="picker" />
-          <mat-datepicker-toggle
-            matSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Meeting Date</mat-label>
+        <input formControlName="date" matInput [matDatepicker]="picker" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-      <div>
-        <mat-form-field appearance="fill" class="start-time">
+      <mat-form-field appearance="fill" class="start-time">
           <mat-label>Start Time</mat-label>
-          <input formControlName="startTime" matInput type="time" />
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field appearance="fill">
-          <mat-label>End Time</mat-label>
-          <input formControlName="endTime" matInput type="time" />
-        </mat-form-field>
-      </div>
+          <input
+            class="custom-time-input"
+            formControlName="startTime"
+            matInput
+            type="time"
+          />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>End Time</mat-label>
+        <input formControlName="endTime" class="custom-time-input" matInput type="time" />
+      </mat-form-field>
     </div>
     <mat-error *ngIf="timeError"
       >**time should be between 9AM and 6PM, meeting should be of atleast 30

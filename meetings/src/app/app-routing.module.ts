@@ -16,9 +16,12 @@ const routes: Routes = [
   {
     path: "dashboard",
     component: DashBoardComponent
+  },
+  {
+    path: "**",
+    redirectTo: "/login"
   }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

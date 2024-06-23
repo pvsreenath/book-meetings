@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { User } from './models/user.model';
 import { Meeting } from './models/meeting.model';
-import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  constructor() {}
-  user: User = {
+  public user: User = {
     userName: 'Leo',
     password: 'Password123',
   };
+  public changeNotify = new Subject();
+  public rooms: string[] = ['1', '2', '3', '4', '5', '6'];
+  public meetings: Meeting[] = [];
 
-  changeNotify = new Subject();
-
-  rooms: string[] = ['1', '2', '3', '4', '5', '6'];
-
-  meetings: Meeting[] = [];
+  constructor() {}
 }
